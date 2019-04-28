@@ -6,11 +6,9 @@
   "scripts": {
     "start": "electron ."
   },
-  "repository": "git@github.com:stevekinney/clipmaster.git",
-  "author": "Steve Kinney <hello@stevekinney.net> (http://stevekinney.net)",
   "license": "MPLv2",
   "dependencies": {
-    "electron": "1.8.2"
+    "electron": ">=1.8.8"
   },
   "devDependencies": {
     "eslint": "4.17.0"
