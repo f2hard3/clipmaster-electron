@@ -14,12 +14,12 @@ let browserWindow = null;
 
 const getIcon = () =>
     process.platform === 'win32'
-        ? 'icon-light@sx.ico'
+        ? 'icon-light@2x.ico'
         : systemPreferences.isDarkMode()
         ? 'icon-light.png'
         : 'icon-dark.png';
 
-app.on('ready', () => {    
+app.on('ready', () => {
     if (app.dock) app.dock.hide();
 
     tray = new Tray(path.join(__dirname, getIcon()));
@@ -27,7 +27,10 @@ app.on('ready', () => {
 
     if (process.platform === 'win32') tray.on('click', tray.popUpContextMenu);
 
-    browserWindow = new BrowserWindow({ show: false });
+    browserWindow = new BrowserWindow({
+        show: false,
+        webPreferences: { nodeIntegration: true }
+    });
 
     browserWindow.loadURL(`file://${__dirname}/index.html`);
 
@@ -49,7 +52,7 @@ app.on('ready', () => {
 
     updateMenu();
 
-    tray.setToolTip('Clipmaster');    
+    tray.setToolTip('Clipmaster');
 });
 
 const clippings = [];
